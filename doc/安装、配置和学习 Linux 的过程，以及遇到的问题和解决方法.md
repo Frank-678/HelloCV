@@ -162,7 +162,7 @@ swap=0
 
 `.wslconfig` 管理 WSL2 的全局设置。我的配置启用了镜像网络、DNS 隧道、防火墙集成和自动代理，并设置了内存、处理器数量与交换空间。[T5][T6]（当然是[T5][T6]教程的推荐，我也看不懂，但这里埋了一个深坑！后面会debug到）
 
-镜像模式支持从 WSL 通过 IPv4 回环地址访问 Windows 上的服务。`autoProxy` 与 Windows 系统代理配置有关；Clash 的运行状态、系统代理开关和 TUN 模式需要分别检查。[T6][T21]
+镜像模式支持从 WSL 通过 IPv4 回环地址访问 Windows 上的服务。`autoProxy` 与 Windows 系统代理配置有关；[某种网络工具] 的运行状态、系统代理开关和 TUN 模式需要分别检查。[T6][T21]
 
 我还运行过：
 
@@ -214,14 +214,14 @@ unset_proxy() {
 我实际运行过的检查包括：
 
 ```bash
-ping -c 4 google.com
-ping -c 4 8.8.8.8
+ping -c 4 [某测试域名]
+ping -c 4 [某公共DNS地址]
 ip addr
 ip addr show eth0
 ip -4 route
 cat /etc/resolv.conf
 curl -I https://github.com
-curl -I https://www.google.com
+curl -I https://[某测试域名]
 curl -I http://archive.ubuntu.com
 curl -I -m 10 https://github.com
 ```
@@ -413,7 +413,7 @@ npm install -g npm@12.0.2
 
 
 
-## 七、Snap 网络故障与 Clash
+## 七、Snap 网络故障与 [某种网络工具]
 ### 1. 复现现象
 我尝试启动 `codex`，随后通过 Snap 安装：
 
@@ -466,7 +466,7 @@ curl --noproxy '*' -4 -I --connect-timeout 5 --max-time 10 https://api.snapcraft
 ![](https://cdn.nlark.com/yuque/0/2026/png/64602776/1790832764493-0117faa8-516b-4693-a9a6-8e647d9d6892.png)
 
 ### 3. 修复与持久化
-我的目标是让 WSL 公网流量进入 Clash 的策略控制范围。我首先确认了 Clash Verge 的 TUN 与 WSL 镜像模式，并进行了两项处理：
+我的目标是让 WSL 公网流量进入 [某种网络工具] 的策略控制范围。我首先确认了 [某种网络工具] 的 TUN 与 WSL 镜像模式，并进行了两项处理：
 
 1. 保留 `/etc/environment` 的备份，将代理地址写入该文件，并继续核对服务访问情况。
 2. 将 `eth0` 的 MTU 从 `9000` 调整为 `1500`，比较修改前后的 TLS 请求结果。
@@ -475,7 +475,7 @@ curl --noproxy '*' -4 -I --connect-timeout 5 --max-time 10 https://api.snapcraft
 
 ```properties
 [Unit]
-Description=Set WSL eth0 MTU for Clash TUN path stability
+Description=Set WSL eth0 MTU for [某种网络工具] TUN path stability
 After=network.target
 ConditionPathExists=/sys/class/net/eth0
 
@@ -545,7 +545,7 @@ Get-DiskImage -ImagePath "D:\Program Files\Docker\DockerDesktopWSL\main\ext4.vhd
 + **[H11]** [Win11 终极开发环境搭建：WSL2 + VS Code + Docker 全攻略](https://blog.csdn.net/qq_45141261/article/details/158346481)。开发工具协同。
 + **[H12]** [极智开发：win11+wsl2+docker+vscode 开发环境构建](https://zhuanlan.zhihu.com/p/618014395)。开发工具协同。 
 + **[H13]** [WSL2 下的环境配置 · Hello CTF](https://hello-ctf.com/hc-pwn/wsl2_environment/)。Linux 工具环境。
-+ **[H14]** [Clash Verge Rev v2.5.2](https://github.com/clash-verge-rev/clash-verge-rev/releases/tag/v2.5.2)。代理客户端发布页。
++ **[H14]** [[某种网络工具]](#)。代理客户端发布页。
 + **[H15]** [Ubuntu 软件仓库目录](https://archive.ubuntu.com/ubuntu/)。APT 仓库。
 + **[H16]** [Install Docker Desktop on Windows](https://docs.docker.com/desktop/setup/install/windows-install/)。Docker 官方安装说明。
 + **[H17]** [Docker Desktop](https://www.docker.com/products/docker-desktop/)。容器开发工具。
@@ -579,7 +579,7 @@ Get-DiskImage -ImagePath "D:\Program Files\Docker\DockerDesktopWSL\main\ext4.vhd
 + **[T18]** [Astral：Using uv with Jupyter](https://docs.astral.sh/uv/guides/integration/jupyter/)。项目环境中的 Jupyter。
 + **[T19]** [OpenAI：Codex CLI](https://developers.openai.com/codex/cli/)。官方 npm 安装渠道。
 + **[T20]** [Snap：Network requirements](https://snapcraft.io/docs/reference/administration/network-requirements/)。商店网络访问要求。
-+ **[T21]** [Mihomo：TUN 配置](https://wiki.metacubex.one/config/inbound/tun/)。TUN 路由及相关边界。
++ **[T21]** [[某种网络内核]：TUN 配置](#)。TUN 路由及相关边界。
 + **[T22]** [Astral：uv CLI reference](https://docs.astral.sh/uv/reference/cli/#uv-run)。`uv run` 与锁文件选项。
 
 
@@ -728,16 +728,16 @@ export NO_PROXY="$no_proxy"
 nano ~/.bashrc
 env | grep -i proxy
 curl -I https://github.com      # 配置生效后正常应返回 HTTP/2 200 之类的状态码
-curl -I https://www.google.com  # 换个站点再测一次，能正常返回状态码即代理生效
+curl -I https://[某测试域名]  # 换个站点再测一次，能正常返回状态码即代理生效
 curl -I https://github.com      # 配置生效后正常应返回 HTTP/2 200 之类的状态码
-curl -I https://www.google.com  # 换个站点再测一次，能正常返回状态码即代理生效
+curl -I https://[某测试域名]  # 换个站点再测一次，能正常返回状态码即代理生效
 exit
 nvidia-smi
 intel-smi
 env | grep proxy
-ping -c 4 google.com
+ping -c 4 [某测试域名]
 nano ~/.bashrc
-ping -c 4 8.8.8.8
+ping -c 4 [某公共DNS地址]
 curl -I https://github.com
 ip addr
 cat /etc/resolv.conf
