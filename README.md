@@ -8,28 +8,48 @@
 | --- | --- |
 | `README.md` | 仓库说明、环境配置与使用方法 |
 | [notes-links.md][notes] | 全部语雀笔记链接及对应本地文稿 |
-| [repos-links.md][repos] | 实践仓库链接，包括 [git_training][git-training] |
-| [doc/][docs] | Linux、Git 学习笔记与实践记录的 Markdown 存档 |
+| [repos-links.md][repos] | 实践仓库链接 |
+| [doc/][docs] | 各阶段学习笔记与实践记录的 Markdown 存档 |
 | `LICENSE` | 许可证 |
+
+## 各阶段内容
+
+### 第一次任务：Linux + Git
+
+- **Linux**：在 Windows 中配置 WSL 2，安装 Ubuntu 22.04，配置网络与软件源。
+- **Git**：配置提交身份，分支管理，暂存与合并，变基，远程推送到 Gitee。
+
+实践仓库：[frank-678/git_training (Gitee)][git-training]
+
+### 第二次任务：CMake + LLM
+
+- **CMake**：学习 CMakeLists.txt 的写法，模块化构建（`add_subdirectory` + `add_library`），`target_include_directories` 的 PUBLIC 传播，源码外构建流程。
+- **LLM**：通过 DeepSeek API 实现石头剪刀布决策网关，学习 HTTP 调用 API、JSON 容错处理和重试逻辑。
+
+实践仓库：[frank-678/UnitConverter (Gitee)][unitconv]
 
 ## 环境配置
 
-仅阅读文档无需安装依赖。复现实践时，按对应笔记配置环境：
+复现各实践任务时，按对应笔记配置环境：
 
-1. **Linux**：在 Windows 中准备终端等工具，安装 WSL 2 与 Ubuntu 22.04，创建用户并配置网络、软件源。完整过程见 [Linux 学习与实践记录][linux-local]。
-2. **Git**：安装 Git，检查版本并设置提交姓名与邮箱，步骤见 [Git 学习笔记][git-local]；向 Gitee 推送前的 SSH 公钥配置与连接测试见 [Git 实践任务][git-practice-local]。
+1. **Linux**：WSL 2 + Ubuntu 22.04，完整过程见 [Linux 学习与实践记录][linux-local]。
+2. **Git**：安装 Git，配置提交身份，SSH 公钥配置，见 [Git 学习笔记][git-local] 与 [Git 实践任务][git-practice-local]。
+3. **CMake**：Windows 上需要 CMake ≥ 3.16 和 MinGW-w64（含 `mingw32-make`），见 [CMake 学习笔记][cmake-local]。
+4. **LLM**：Python 3.x，`pip install requests`，DeepSeek API Key（`DEEPSEEK_API_KEY` 环境变量），见 [LLM 实践任务][llm-local]。
 
 ## 使用说明
 
-1. 从[学习笔记索引][notes]选择主题，阅读语雀原文或本地文稿。
-2. 从[实践仓库索引][repos]进入 `git_training`，查看练习代码、分支和提交记录。
+从[学习笔记索引][notes]选择主题，阅读语雀原文或本地文稿。从[实践仓库索引][repos]查看实践代码。
 
-笔记包含排障过程和错误输入，复现实验时需结合上下文，不要直接批量执行历史命令。
+笔记包含排障过程和错误输入，复现实验时结合上下文，不要直接批量执行历史命令。
 
 [notes]: ./notes-links.md
 [repos]: ./repos-links.md
 [docs]: ./doc/
 [git-training]: https://gitee.com/frank-678/git_training
+[unitconv]: https://gitee.com/frank-678/UnitConverter
 [linux-local]: <./doc/安装、配置和学习 Linux 的过程，以及遇到的问题和解决方法.md>
 [git-local]: ./doc/Git学习笔记.md
 [git-practice-local]: ./doc/Git实践任务.md
+[cmake-local]: ./doc/CMake学习笔记.md
+[llm-local]: ./doc/LLM实践任务.md

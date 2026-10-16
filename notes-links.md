@@ -9,6 +9,15 @@
 - Git 学习笔记：[语雀原文][git-yuque] · [本地文稿][git-local]
 - Git 实践任务：[语雀原文][git-practice-yuque] · [本地文稿][git-practice-local]
 
+## CMake
+
+- CMake 学习笔记：[语雀原文][cmake-yuque] · [本地文稿][cmake-local]
+- CMake 实践任务：[语雀原文][cmake-practice-yuque] · [本地文稿][cmake-practice-local]
+
+## LLM
+
+- LLM 实践任务：[语雀原文][llm-yuque] · [本地文稿][llm-local]
+
 [返回首页][home] · [实践仓库索引][repos]
 
 [linux-yuque]: https://www.yuque.com/u62833328/sfa8st/smtl6lw69oxctoxu
@@ -17,5 +26,11 @@
 [git-local]: ./doc/Git学习笔记.md
 [git-practice-yuque]: https://www.yuque.com/u62833328/sfa8st/bi23mg5r8yi909bt
 [git-practice-local]: ./doc/Git实践任务.md
+[cmake-local]: ./doc/CMake学习笔记.md
+[cmake-yuque]: https://www.yuque.com/u62833328/sfa8st/tcxduz2mlqf76us8
+[cmake-practice-local]: ./doc/CMake实践任务.md
+[cmake-practice-yuque]: https://www.yuque.com/u62833328/sfa8st/induc08tloz4mabl
+[llm-local]: ./doc/LLM实践任务.md
+[llm-yuque]: https://www.yuque.com/u62833328/sfa8st/dz6gr0arug7y8t5z
 [home]: ./README.md
 [repos]: ./repos-links.md
