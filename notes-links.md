@@ -18,6 +18,10 @@
 
 - LLM 实践任务：[语雀原文][llm-yuque] · [本地文稿][llm-local]
 
+## ROS2
+
+- ROS2 学习与实践记录（入门篇第 1 至第 5 章）：[语雀原文][ros2-yuque] · [本地文稿][ros2-local]
+
 [返回首页][home] · [实践仓库索引][repos]
 
 [linux-yuque]: https://www.yuque.com/u62833328/sfa8st/smtl6lw69oxctoxu
@@ -32,5 +36,7 @@
 [cmake-practice-yuque]: https://www.yuque.com/u62833328/sfa8st/induc08tloz4mabl
 [llm-local]: ./doc/LLM实践任务.md
 [llm-yuque]: https://www.yuque.com/u62833328/sfa8st/dz6gr0arug7y8t5z
+[ros2-yuque]: https://www.yuque.com/u62833328/sfa8st/ghyg48gw6wi1dxhc
+[ros2-local]: ./doc/ROS2学习笔记.md
 [home]: ./README.md
 [repos]: ./repos-links.md
